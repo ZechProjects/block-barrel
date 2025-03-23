@@ -12,24 +12,209 @@
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to Block & Barrel</h1>
-      <div id="aiCanvas"></div>
-      <div id="chatbox">
-        <div id="messages"></div>
-        <input
-          type="text"
-          id="userInput"
-          placeholder="Type your message here..."
-        />
-        <button id="sendBtn">Send</button>
+      <h1>Welcome to Block & Barrel 🍺</h1>
+      <div id="barCanvas">
+        <div id="leftPanel">
+          <div id="aiCanvas"></div>
+          <div id="widgetContainer">
+            <h2>Trading Graphs</h2>
+            <div class="rounded-md border bg-[rgb(24,29,41)]/60 p-6">
+              <div class="w-full overflow-auto">
+                <table
+                  class="w-full caption-bottom text-sm border-separate border-spacing-y-4"
+                >
+                  <thead class="[&amp;_tr]:border-b-0">
+                    <tr
+                      class="border-b transition-colors hover:bg-[rgb(24,29,41)]/60 data-[state=selected]:bg-[rgb(24,29,41)]/60"
+                    >
+                      <th
+                        class="h-12 px-4 text-left align-middle [&amp;:has([role=checkbox])]:pr-0 flex items-center space-x-1 text-xl font-medium text-foreground"
+                      >
+                        <span>Feed</span
+                        ><img
+                          alt="sort"
+                          loading="lazy"
+                          width="13"
+                          height="13"
+                          decoding="async"
+                          data-nimg="1"
+                          src="https://chainlink-low-latency-data-feed-demo.vercel.app/sort.svg"
+                          style="color: transparent"
+                        />
+                      </th>
+                      <th
+                        class="h-12 px-4 text-left align-middle [&amp;:has([role=checkbox])]:pr-0 text-xl font-medium text-foreground"
+                      >
+                        Answer
+                      </th>
+                      <th
+                        class="h-12 px-4 text-left align-middle [&amp;:has([role=checkbox])]:pr-0 w-[300px] text-xl font-medium text-foreground"
+                      >
+                        Cex Comparison
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="[&amp;_tr:last-child]:border-0 text-base font-medium leading-4"
+                  >
+                    <tr
+                      class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted rounded-md bg-[rgb(43,49,60)]/40"
+                    >
+                      <td
+                        class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 rounded-l-md"
+                      >
+                        <div class="flex items-center space-x-2">
+                          <img
+                            alt="ethereum"
+                            loading="lazy"
+                            width="16"
+                            height="16"
+                            decoding="async"
+                            data-nimg="1"
+                            src="https://chainlink-low-latency-data-feed-demo.vercel.app/ethereum.svg"
+                            style="color: transparent"
+                          /><span> ETH/USD</span>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
+                      >
+                        <div class="flex items-center space-x-2">
+                          <span class="w-[60px]">$2004.36</span>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 rounded-r-md"
+                        width="210"
+                      >
+                        <div
+                          class="grid w-[210px] grid-cols-2 items-center gap-2"
+                        >
+                          <div class="flex items-center space-x-2">
+                            <img
+                              alt="binance"
+                              loading="lazy"
+                              width="16"
+                              height="16"
+                              decoding="async"
+                              data-nimg="1"
+                              src="https://chainlink-low-latency-data-feed-demo.vercel.app/binance.svg"
+                              style="color: transparent"
+                            /><span class="w-[60px]">$2004.54</span>
+                          </div>
+                          <div class="flex items-center space-x-2">
+                            <img
+                              alt="coinbase"
+                              loading="lazy"
+                              width="16"
+                              height="16"
+                              decoding="async"
+                              data-nimg="1"
+                              src="https://chainlink-low-latency-data-feed-demo.vercel.app/coinbase.svg"
+                              style="color: transparent"
+                            /><span class="w-[60px]">$2004.56</span>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted rounded-md bg-[rgb(43,49,60)]/40"
+                    >
+                      <td
+                        class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 rounded-l-md"
+                      >
+                        <div class="flex items-center space-x-2">
+                          <img
+                            alt="arb"
+                            loading="lazy"
+                            width="16"
+                            height="16"
+                            decoding="async"
+                            data-nimg="1"
+                            src="https://chainlink-low-latency-data-feed-demo.vercel.app/avax.svg"
+                            style="color: transparent"
+                          /><span>AVAX/USD</span>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
+                      >
+                        <div class="flex items-center space-x-2">
+                          <span class="w-[60px]">$19.46</span>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 rounded-r-md"
+                        width="210"
+                      >
+                        <div
+                          class="grid w-[210px] grid-cols-2 items-center gap-2"
+                        >
+                          <div class="flex items-center space-x-2">
+                            <img
+                              alt="binance"
+                              loading="lazy"
+                              width="16"
+                              height="16"
+                              decoding="async"
+                              data-nimg="1"
+                              src="https://chainlink-low-latency-data-feed-demo.vercel.app/binance.svg"
+                              style="color: transparent"
+                            /><span class="w-[60px]">$19.46</span>
+                          </div>
+                          <div class="flex items-center space-x-2">
+                            <img
+                              alt="coinbase"
+                              loading="lazy"
+                              width="16"
+                              height="16"
+                              decoding="async"
+                              data-nimg="1"
+                              src="https://chainlink-low-latency-data-feed-demo.vercel.app/coinbase.svg"
+                              style="color: transparent"
+                            /><span class="w-[60px]">$19.46</span>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chatbox">
+          <div id="messages"></div>
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message here..."
+          />
+          <button id="sendBtn">Send</button>
+          <button id="tipBtn">Tip the Bartender</button>
+          <button id="toggleUserPanelBtn">Toggle Users</button>
+        </div>
+        <div id="rightPanel">
+          <div id="userPanel">
+            <h2>Patrons</h2>
+            <!-- User list will be dynamically populated -->
+          </div>
+        </div>
       </div>
-      <div id="userPanel">
-        <h2>Users in the Bar</h2>
-        <!-- User list will be dynamically populated -->
-      </div>
-      <button id="toggleUserPanelBtn">Toggle Users</button>
-      <button id="tipBtn">Tip the Bartender</button>
     </div>
+    <!-- Elfsight Radio Player | Untitled Radio Player -->
+    <script
+      src="https://static.elfsight.com/platform/platform.js"
+      async
+    ></script>
+    <div
+      class="elfsight-app-a13157b4-c778-4aea-a06b-91638c594a0c"
+      data-elfsight-app-lazy
+    ></div>
     <script src="web3.min.js"></script>
     <script src="app.js"></script>
   </body>

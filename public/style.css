@@ -19,16 +19,47 @@ body {
   position: relative;
 }
 
-#chatbox {
+#barCanvas {
   background-color: #1e1e1e;
   border: 1px solid #333;
   padding: 10px;
-  width: 70%; /* Adjust width to accommodate user panel */
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+
+#leftPanel {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 10px;
+  padding: 10px;
+}
+
+#chatbox {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  width: 60%;
   height: 60%;
   margin: 10px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+#rightPanel.collapsed + #chatbox {
+  width: 80%;
+}
+
+#rightPanel {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 10px;
 }
 
 #messages {
@@ -48,12 +79,15 @@ body {
 }
 
 #sendBtn {
-  padding: 10px 20px;
+  padding: 5px 10px;
   background-color: #6200ea;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+  max-width: fit-content;
 }
 
 #sendBtn:hover {
@@ -64,59 +98,87 @@ body {
   background-color: #1e1e1e;
   border: 1px solid #333;
   padding: 10px;
-  width: 20%;
+  width: 100%;
   height: 60%;
-  margin: 10px;
   overflow-y: scroll;
   border-radius: 8px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+}
+
+#rightPanel.collapsed {
+  transform: translateX(100%);
+}
+
+#rightPanel {
   transition: transform 0.3s ease;
 }
 
-#userPanel.collapsed {
-  transform: translateY(-50%) translateX(100%);
-}
-
 #toggleUserPanelBtn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  padding: 5px 10px;
   background-color: #6200ea;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  padding: 10px;
-  transition: right 0.3s ease;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+  max-width: fit-content;
 }
 
 #toggleUserPanelBtn.collapsed {
   right: 20%;
 }
 
+#toggleUserPanelBtn:hover {
+  background-color: #3700b3;
+}
+
 #aiCanvas {
-  background-image: url("bar-background.jpg");
+  background-image: url("img/ai.jpg");
   background-size: cover;
-  width: 60%;
-  height: 30%;
-  margin: 10px;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 10px;
   border-radius: 8px;
 }
 
+#widgetContainer {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  padding: 10px;
+  width: 100%;
+  height: 30%;
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
 #tipBtn {
-  padding: 10px 20px;
+  padding: 5px 10px;
   margin-top: 10px;
   background-color: #03dac6;
   color: #121212;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+  max-width: fit-content;
 }
 
 #tipBtn:hover {
   background-color: #018786;
+}
+
+#radioWidget {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

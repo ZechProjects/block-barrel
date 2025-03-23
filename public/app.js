@@ -13,7 +13,7 @@ document.getElementById("tipBtn").addEventListener("click", () => {
 });
 
 document.getElementById("toggleUserPanelBtn").addEventListener("click", () => {
-  const userPanel = document.getElementById("userPanel");
+  const userPanel = document.getElementById("rightPanel");
   const toggleBtn = document.getElementById("toggleUserPanelBtn");
   userPanel.classList.toggle("collapsed");
   toggleBtn.classList.toggle("collapsed");
@@ -44,7 +44,7 @@ function getAITipResponse() {
 }
 
 // Simulate user list
-const users = ["Alice", "Bob", "Charlie"];
+const users = ["🤖 Vitalik", "😎 Jerry", "🎃 Ben", "😶‍🌫️ Satoshi"];
 const userPanel = document.getElementById("userPanel");
 users.forEach((user) => {
   const userElement = document.createElement("div");
