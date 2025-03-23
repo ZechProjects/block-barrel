@@ -7,10 +7,46 @@ document.getElementById("sendBtn").addEventListener("click", () => {
   }
 });
 
-document.getElementById("tipBtn").addEventListener("click", () => {
-  addMessage("User", "Here's a tip for you!");
-  getAITipResponse();
+document.getElementById("tipBtn").addEventListener("click", async () => {
+  const tipAmount = prompt("Enter tip amount in ETH:");
+  if (tipAmount && typeof window.ethereum !== "undefined") {
+    const accounts = await ethereum.request({ method: "eth_accounts" });
+    const params = [
+      {
+        from: accounts[0],
+        to: "YOUR_CONTRACT_ADDRESS",
+        value: ethers.utils.parseEther(tipAmount)._hex,
+      },
+    ];
+    try {
+      await ethereum.request({ method: "eth_sendTransaction", params });
+      addMessage("User", `Tipped ${tipAmount} ETH`);
+      getAITipResponse();
+    } catch (error) {
+      console.error("Transaction failed:", error);
+    }
+  } else {
+    alert("Please connect your wallet first!");
+  }
 });
+
+document
+  .getElementById("connectWalletBtn")
+  .addEventListener("click", async () => {
+    if (typeof window.ethereum !== "undefined") {
+      try {
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        document.getElementById(
+          "walletAddress"
+        ).textContent = `Connected: ${accounts[0]}`;
+      } catch (error) {
+        console.error("User rejected the request.");
+      }
+    } else {
+      alert("Please install MetaMask!");
+    }
+  });
 
 document.getElementById("toggleUserPanelBtn").addEventListener("click", () => {
   const userPanel = document.getElementById("rightPanel");
