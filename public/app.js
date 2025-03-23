@@ -1,9 +1,13 @@
-document.getElementById("sendBtn").addEventListener("click", () => {
+document.getElementById("sendBtn").addEventListener("click", async () => {
   const userInput = document.getElementById("userInput").value;
   if (userInput.trim() !== "") {
     addMessage("User", userInput);
     getAIResponse(userInput);
     document.getElementById("userInput").value = "";
+
+    const xmtp = await connectXMTP();
+    const recipientAddress = "RECIPIENT_WALLET_ADDRESS"; // Replace with actual recipient address
+    await sendMessage(xmtp, recipientAddress, userInput);
   }
 });
 
@@ -96,3 +100,18 @@ avatar.src = "ai-avatar.png"; // Ensure this image exists in your public folder
 avatar.onload = () => {
   ctx.drawImage(avatar, 0, 0, aiCanvas.width, aiCanvas.height);
 };
+
+async function connectXMTP() {
+  const { Client } = window.xmtp;
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const xmtp = await Client.create(signer);
+  return xmtp;
+}
+
+async function sendMessage(xmtp, recipientAddress, message) {
+  const conversation = await xmtp.conversations.newConversation(
+    recipientAddress
+  );
+  await conversation.send(message);
+}
