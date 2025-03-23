@@ -2,7 +2,8 @@ document.getElementById("sendBtn").addEventListener("click", async () => {
   const userInput = document.getElementById("userInput").value;
   if (userInput.trim() !== "") {
     addMessage("User", userInput);
-    getAIResponse(userInput);
+    const aiResponse = await getElizaResponse(userInput);
+    addMessage("AI Bartender", aiResponse);
     document.getElementById("userInput").value = "";
 
     const xmtp = await connectXMTP();
@@ -68,7 +69,7 @@ function addMessage(sender, message) {
 }
 
 function getAIResponse(userInput) {
-  // Simulate AI response
+  // Simulate AI response - replace with actual AI response
   const aiResponse = `AI Bartender: You said "${userInput}". Let's talk about trading!`;
   setTimeout(() => {
     addMessage("AI Bartender", aiResponse);
@@ -114,4 +115,16 @@ async function sendMessage(xmtp, recipientAddress, message) {
     recipientAddress
   );
   await conversation.send(message);
+}
+
+async function getElizaResponse(userInput) {
+  const response = await fetch("http://localhost/eliza-response", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ input: userInput }),
+  });
+  const data = await response.json();
+  return data.response;
 }
